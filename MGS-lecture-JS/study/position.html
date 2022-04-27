@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .mother {
+        width: 270px;
+        border: 4px solid lime;
+        padding: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 50;
+        margin-top: 200px;
+      }
+      .mother.left {
+        float: left;
+      }
+      .mother.right {
+        float: right;
+      }
+      .mother > .photo {
+        width: 100px;
+        height: 100px;
+        border: 10px solid lime;
+        float: left;
+        opacity: 0.5;
+        /* margin-right:20px; */
+      }
+      .mother > .text {
+        border: 2px solid red;
+      }
+      .fix::after {
+        content: "";
+        border: 2px solid blue;
+        clear: both;
+        display: block;
+      }
+      .grandmom {
+        border: 4px solid black;
+        padding: 20px;
+        /* overflow: hidden; */
+        width: 700px;
+        overflow: auto;
+        margin: 0 auto;
+      }
+      .bottom {
+        border: 4px solid red;
+        clear: both;
+        padding: 10px;
+      }
+      .mother .comment {
+        text-decoration: none;
+        border: 1px solid red;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+      }
+      .mother .comment > img {
+        width: 30px;
+      }
+      .mother .comment > span {
+        color: rgb(253, 0, 0);
+        position: absolute;
+        right: 100%;
+        /* 이미지 크기에 따라서 위치가 변할 수 있도록 */
+        top: -5px;
+        /* border: 1px solid orange; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandmom">
+      <div class="mother left">
+        <div class="photo"></div>
+        <div class="text">
+          The div It can be used with, lang, and tiThe div It
+        </div>
+        <a href="" class="comment"
+          ><img src="./icon_info.png" alt="" /> <span>888</span></a
+        >
+        <!-- <div class="fix"></div> -->
+      </div>
+      <div class="mother right">
+        <div class="photo"></div>
+        <div class="text">
+          The div It can be used with, lang, and tiThe div It
+        </div>
+        <a href="" class="comment"
+          ><img src="./icon_info.png" alt="" /><span>426245</span></a
+        >
+        <!-- <div class="fix"></div> -->
+      </div>
+      <div class="bottom">langasdadsf, and tiThe div It</div>
+    </div>
+  </body>
+</html>
