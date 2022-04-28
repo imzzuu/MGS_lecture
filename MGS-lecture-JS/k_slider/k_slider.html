@@ -12,17 +12,21 @@
     <section>
       <!-- <div class="kind_wrap">
         <div class="kind_slider"> -->
-          <ul class="slider">
-            <li>
+
+          <!-- class name 은 자유로 설정 가능 => kSlider 의 인수로 넘겨주기
+          태그 이름 자유로 지정 가능 => 자바스크립트에서 클래스 네임 자동으로 부여 후 class 로 동작시키도록  -->
+          <div class="slider">
+            <div>
               <img src="https://via.placeholder.com/800x200.png?text=1" alt="" />
-            </li>
-            <li>
+            </div>
+            <div>
               <img src="https://via.placeholder.com/800x200.png?text=2" alt="" />
-            </li>
-            <li>
+            </div>
+            <div>
               <img src="https://via.placeholder.com/800x200.png?text=3" alt="" />
-            </li>
-          </ul>
+            </div>
+          </div>
+
         <!-- </div> -->
         <!-- <div class="arrow">
           <a href="" class="prev">이전</a>
@@ -33,9 +37,7 @@
 
     <script>
       // 모든 html 요소들이 모두 로드가 된 후에 함수 안의 코드를 실행한다. => 비동기 컨트롤
-      window.onload = function(){
-        kSlider()
-      }
+        kSlider('.slider', {speed:500})
     </script>
   </body>
 </html>

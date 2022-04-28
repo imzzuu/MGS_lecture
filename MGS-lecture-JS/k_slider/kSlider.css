@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 * {
   margin: 0;
   padding: 0;
@@ -15,12 +17,12 @@ li {
 .kind_wrap > .kind_slider {
   overflow: hidden;
 }
-.kind_wrap > .kind_slider .slider {
+.kind_wrap > .kind_slider .k_list {
   position: relative;
   /* left: 0;
     transition: 0.5s ease-in-out; */
 }
-.kind_wrap > .kind_slider .slider li {
+.kind_wrap > .kind_slider .k_list .k_item {
   float: left;
 }
 .kind_wrap > .kind_slider img {
