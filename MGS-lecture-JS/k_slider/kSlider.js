@@ -1,6 +1,12 @@
 function kSlider(name, option) {
   // 이미지만 로드를 확인해서 innerName() 실행해주기
   const toBeLoaded = document.querySelectorAll(`${name} img`); // 안에 img 파일 다 찾고
+
+  // class 설정하지 않거나, name 을 잘못 넘겨줘서 img 노드를 찾지 못했을 때 던질 에러
+  if (toBeLoaded.length === 0) {
+    throw new Error(name + "라는 노드를 찾지 못했습니다.");
+  }
+
   let loadedImages = 0;
   toBeLoaded.forEach((item) => {
     item.onload = () => {
@@ -64,10 +70,23 @@ function kSlider(name, option) {
     moveBtn.appendChild(nextA);
     kindWrap.appendChild(moveBtn);
 
+    /* 옵션 셋팅 */
+    // 함수로 감싸서 바깥에서 안쪽으로 접근해서 option을 수정하지 못하도록
+    // 즉시 실행 함수
+    const OPTION = (function (opt) {
+      const OPT = { ...opt }; // 복사
+      if (OPT.speed < 0) {
+        // 에러 점검 (사용자가 speed 에 0이하 값을 넘겨줬을 때)
+        throw new Error("0이상의 값을 넣으세요.");
+      } else {
+        return Object.freeze(OPT); // 수정 못하게 프리즈 시키기!
+      }
+    })(option); // parameter 넣어줌
+
     /* 주요 변수 초기화*/
     let moveDist = 0;
     let currentNum = 1;
-    const speedTime = option.speed;
+    // const speedTime = OPTION.speed;
 
     /* ul의 넓이 계산 및 CSSOM 셋업 */
     //   querySelectorAll 은 배열을 반환(실제 배열은 아님)
@@ -96,7 +115,7 @@ function kSlider(name, option) {
         currentNum += -1 * n;
         moveDist += liWidth * n;
         slider.style.left = `${moveDist}px`;
-        slider.style.transition = `${speedTime}ms ease`;
+        slider.style.transition = `${OPTION.speed}ms ease`;
       };
 
       if (e.target.className === "next") {
@@ -109,7 +128,7 @@ function kSlider(name, option) {
             moveDist = -liWidth; // 진짜 A 값으로 만들고
             slider.style.left = `${moveDist}px`; // 진짜 A를 보여줌
             currentNum = 1;
-          }, speedTime); // 여기 때문에 0.5 아닌 500 으로 설정해야함
+          }, OPTION.speed); // 여기 때문에 0.5 아닌 500 으로 설정해야함
         }
       } else {
         move(1);
@@ -119,7 +138,7 @@ function kSlider(name, option) {
             moveDist = -liWidth * (slideCloneItems.length - 2);
             slider.style.left = `${moveDist}px`;
             currentNum = slideCloneItems.length - 2;
-          }, speedTime);
+          }, OPTION.speed);
         }
       }
 

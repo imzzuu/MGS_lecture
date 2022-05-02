@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
     <link rel="stylesheet" href="./kSlider.css">
-    <script src="./kSlider.js"></script>
+    <!-- <script src="./kSlider.js"></script> -->
+    <script src="./kSlider_ref.js"></script>
+
   </head>
   <body>
     <section>
@@ -37,7 +39,12 @@
 
     <script>
       // 모든 html 요소들이 모두 로드가 된 후에 함수 안의 코드를 실행한다. => 비동기 컨트롤
-        kSlider('.slider', {speed:500})
+        kSlider('.slider', {
+          speed:500,
+          direction: 'horizontal' // vertical
+        })
+
+
     </script>
   </body>
 </html>
